@@ -1,6 +1,10 @@
 ## Curso de Python: Automação de Tarefas e Análise de Dados
 
-Repositório do curso de Python! Este repositório foi criado para armazenar os códigos e materiais do curso, focando em automação de tarefas, análise de dados e outras aplicações usando Python. Durante o curso, utilizaremos as bibliotecas `pandas`, `pyautogui` e `time` para desenvolver diversos projetos e exemplos práticos.
+Repositório do curso de Python! Este repositório foi criado para armazenar os códigos e materiais do curso, focando em automação de tarefas, análise de dados e outras aplicações usando Python.
+Durante o curso, utilizaremos as bibliotecas:
+- `pandas`
+- `pyautogui`
+- `time`
 
 ## Conteúdo
 
@@ -8,9 +12,10 @@ O curso está dividido em módulos, cada um abordando um tema específico. Abaixo e
 
 ### Módulo 1: Automação de Tarefas
 
-- Introdução ao `pyautogui`
-- Automação de tarefas repetitivas no ambiente de trabalho
-- Scripts para automatizar ações no navegador e outras aplicações
+- Automação de Tarefas
+- Criação de Boots
+- Economizar horas de trabalho
+- RPA e Web-Scraping
 
 ## Requisitos
 
