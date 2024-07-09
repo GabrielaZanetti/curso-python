@@ -5,8 +5,10 @@
 # Passo 4: Cadastrar o primeiro produto
 # Passo 5: Repetir o passo 4 até cadastrar todos os produtos
 
-import pyautogui # automatiza mouse/teclado/tela
+import pyautogui # pip install pyautogui (automatiza mouse/teclado/tela)
+import pandas # pip install pandas (importar o BD)
 import time
+import os
 
 pyautogui.PAUSE = 0.5 # a cada comando do pyautogui faz uma pausa de meio segundo
 
@@ -27,3 +29,6 @@ pyautogui.hotkey("tab")
 pyautogui.write("minha senha")
 
 pyautogui.click(x=-698, y=536) # click no botao de login
+
+produtos = os.path.join(os.path.dirname(__file__),"produtos.csv") # encontra o arquivo
+dados_produto = pandas.read_csv(produtos)
