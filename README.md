@@ -1,40 +1,47 @@
-## Curso de Python: Automação de Tarefas e Análise de Dados
+## Curso de Python: AutomaÃ§Ã£o de Tarefas e AnÃ¡lise de Dados
 
-Repositório do curso de Python! Este repositório foi criado para armazenar os códigos e materiais do curso, focando em automação de tarefas, análise de dados e outras aplicações usando Python.
+RepositÃ³rio do curso de Python! Este repositÃ³rio foi criado para armazenar os cÃ³digos e materiais do curso, focando em automaÃ§Ã£o de tarefas, anÃ¡lise de dados e outras aplicaÃ§Ãµes usando Python.
 Durante o curso, utilizaremos as bibliotecas:
 - `pandas`
 - `pyautogui`
 - `time`
 
-## Conteúdo
+## ConteÃºdo
 
-O curso está dividido em módulos, cada um abordando um tema específico. Abaixo está uma visão geral do que você encontrará em cada módulo:
+O curso estÃ¡ dividido em mÃ³dulos, cada um abordando um tema especÃ­fico. Abaixo estÃ¡ uma visÃ£o geral do que vocÃª encontrarÃ¡ em cada mÃ³dulo:
 
-### Módulo 1: Automação de Tarefas
+### MÃ³dulo 1: AutomaÃ§Ã£o de Tarefas
 
-- Automação de Tarefas
-- Criação de Boots
+- AutomaÃ§Ã£o de Tarefas
+- CriaÃ§Ã£o de Boots
 - Economizar horas de trabalho
 - RPA e Web-Scraping
 
+### MÃ³dulo 2: Analisando Dados
+
+- AnÃ¡lise e Tratamento de Dados
+- Tabelas (DataFrames)
+- GrÃ¡ficos em python
+- Tirar insights valiosos
+
 ## Requisitos
 
-Para seguir este curso, você precisará ter o Python instalado em sua máquina, além das bibliotecas `pandas`, `pyautogui` e `time`. Você pode instalar essas bibliotecas usando o `pip`:
+Para seguir este curso, vocÃª precisarÃ¡ ter o Python instalado em sua mÃ¡quina, alÃ©m das bibliotecas `pandas`, `pyautogui` e `time`. VocÃª pode instalar essas bibliotecas usando o `pip`:
 
 ```bash
 pip install pandas pyautogui
 ```
 
-## Como Usar Este Repositório
+## Como Usar Este RepositÃ³rio
 
-1. Clone o repositório para a sua máquina local:
+1. Clone o repositÃ³rio para a sua mÃ¡quina local:
     ```bash
     git clone https://github.com/GabrielaZanetti/curso-python
     ```
 
-2. Navegue até o diretório do projeto:
+2. Navegue atÃ© o diretÃ³rio do projeto:
     ```bash
     cd curso-python
     ```
 
-3. Siga as instruções em cada módulo para executar os exemplos e projetos.
+3. Siga as instruÃ§Ãµes em cada mÃ³dulo para executar os exemplos e projetos.
