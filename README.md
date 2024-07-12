@@ -6,6 +6,7 @@ Durante o curso, utilizaremos as bibliotecas:
 - `pyautogui`
 - `time`
 - `plotly.express`
+- `scikit-learn`
 
 ## Conteúdo
 
