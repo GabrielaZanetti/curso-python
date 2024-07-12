@@ -5,6 +5,7 @@ Durante o curso, utilizaremos as bibliotecas:
 - `pandas`
 - `pyautogui`
 - `time`
+- `plotly.express`
 
 ## Conteúdo
 
@@ -23,6 +24,13 @@ O curso está dividido em módulos, cada um abordando um tema específico. Abaix
 - Tabelas (DataFrames)
 - Gráficos em python
 - Tirar insights valiosos
+
+### Módulo 3: IA com python
+
+- Inteligencia Artificial
+- Projeot completo de previsao
+- Ciencia de dados
+- Criacao e Analise de Modelos
 
 ## Requisitos
 
