@@ -33,9 +33,16 @@ O curso está dividido em módulos, cada um abordando um tema específico. Abaix
 - Ciencia de dados
 - Criacao e Analise de Modelos
 
+### Módulo 4: Python Dev
+
+- Criação de Sites e Sistemas
+- Frameworks Python
+- Desenvolvimento de um Chat
+- Front e Backend
+
 ## Requisitos
 
-Para seguir este curso, você precisará ter o Python instalado em sua máquina, além das bibliotecas `pandas`, `pyautogui` e `time`. Você pode instalar essas bibliotecas usando o `pip`:
+Para seguir este curso, você precisará ter o Python instalado em sua máquina, além das bibliotecas `pandas`, `pyautogui`, `time`, `plotly.express` e `scikit-learn`. Você pode instalar essas bibliotecas usando o `pip`:
 
 ```bash
 pip install pandas pyautogui
