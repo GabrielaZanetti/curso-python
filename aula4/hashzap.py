@@ -19,15 +19,13 @@ def main(pagina): # função principal
     pagina.pubsub.subscribe(enviar_mensagem_tunel) # cria o tunel de comunicacao
 
     titulo_janela = ft.Text("Bem vindo ao HashZap")
-    campo_nome_usuario = ft.TextField(label="Escreva seu nome no chat")
-
-    mensagem_texto = ft.TextField(label="Digite sua mensagem")
 
     def enviar_mensagem(event):
         mensagem_user = f"{campo_nome_usuario.value}: {mensagem_texto.value}"
         mensagem_texto.value = ""
         pagina.pubsub.send_all(mensagem_user) # envia a mensagem no tunel
-
+    
+    mensagem_texto = ft.TextField(label="Digite sua mensagem", on_submit=enviar_mensagem)
     btn_enviar = ft.ElevatedButton("Enviar", on_click=enviar_mensagem)
 
     chat = ft.Column()
@@ -43,6 +41,7 @@ def main(pagina): # função principal
         text_entrou_chat = f"{campo_nome_usuario.value} entrou no chat"
         pagina.pubsub.send_all(text_entrou_chat) # envia a mensagem no tunel
 
+    campo_nome_usuario = ft.TextField(label="Escreva seu nome no chat", on_submit=entrar_chat)
     botao_entrar = ft.ElevatedButton("Entrar no Chat", on_click=entrar_chat)
     
     janela = ft.AlertDialog(
