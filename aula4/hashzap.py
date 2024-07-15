@@ -12,6 +12,12 @@ import flet as ft
 def main(pagina): # função principal
     titulo = ft.Text("HashZap")
 
+    def enviar_mensagem_tunel(mensagem):
+        chat.controls.append(ft.Text(mensagem))
+        pagina.update() # atualiza a view da tela
+
+    pagina.pubsub.subscribe(enviar_mensagem_tunel) # cria o tunel de comunicacao
+
     titulo_janela = ft.Text("Bem vindo ao HashZap")
     campo_nome_usuario = ft.TextField(label="Escreva seu nome no chat")
 
@@ -19,10 +25,8 @@ def main(pagina): # função principal
 
     def enviar_mensagem(event):
         mensagem_user = f"{campo_nome_usuario.value}: {mensagem_texto.value}"
-        chat.controls.append(ft.Text(mensagem_user))
-        
         mensagem_texto.value = ""
-        pagina.update() # atualiza a view da tela
+        pagina.pubsub.send_all(mensagem_user) # envia a mensagem no tunel
 
     btn_enviar = ft.ElevatedButton("Enviar", on_click=enviar_mensagem)
 
@@ -37,8 +41,7 @@ def main(pagina): # função principal
         pagina.add(chat, linha_mensagem)
         
         text_entrou_chat = f"{campo_nome_usuario.value} entrou no chat"
-        chat.controls.append(ft.Text(text_entrou_chat))
-        pagina.update() # atualiza a view da tela
+        pagina.pubsub.send_all(text_entrou_chat) # envia a mensagem no tunel
 
     botao_entrar = ft.ElevatedButton("Entrar no Chat", on_click=entrar_chat)
     
@@ -58,4 +61,4 @@ def main(pagina): # função principal
 
     pagina.add(titulo, botao_iniciar)
 
-ft.app(main) # execução do sistema (, view=ft.WEB_BROWSER  // view= visualização do sistema)
+ft.app(main, view=ft.WEB_BROWSER) # execução do sistema (  // view= visualização do sistema)
