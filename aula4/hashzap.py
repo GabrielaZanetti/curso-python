@@ -29,7 +29,7 @@ def main(pagina: ft.Page):  # função principal
         mensagem_container = ft.Container(
             content=ft.Text(mensagem_tunel),
             bgcolor=fundo_cor,
-            margin=10,
+            margin=ft.margin.only(right=15),
             padding=10,
             border_radius=5
         )
