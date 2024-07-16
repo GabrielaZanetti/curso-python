@@ -55,19 +55,23 @@ def main(pagina: ft.Page):  # função principal
     linha_mensagem = ft.Row([mensagem_texto, btn_enviar])
 
     def entrar_chat(event):
-        nonlocal nome_usuario
-        nome_usuario = campo_nome_usuario.value
-        
-        # Remover o título, remover o botão iniciar, fechar janela, criar/campo texto/botão enviar do chat
-        pagina.controls.clear()
-        pagina.update()
-        janela.open = False
+        if not campo_nome_usuario.value:
+            campo_nome_usuario.error_text = "Informe um usuário"
+            campo_nome_usuario.update()
+        else:
+            nonlocal nome_usuario
+            nome_usuario = campo_nome_usuario.value
+            
+            # Remover o título, remover o botão iniciar, fechar janela, criar/campo texto/botão enviar do chat
+            pagina.controls.clear()
+            pagina.update()
+            janela.open = False
 
-        pagina.add(chat, linha_mensagem)
+            pagina.add(chat, linha_mensagem)
 
-        text_entrou_chat = f"{nome_usuario} entrou no chat"
-        pagina.pubsub.send_all(text_entrou_chat)  # envia a mensagem no túnel
-        mensagem_texto.focus()
+            text_entrou_chat = f"{nome_usuario} entrou no chat"
+            pagina.pubsub.send_all(text_entrou_chat)  # envia a mensagem no túnel
+            mensagem_texto.focus()
 
     campo_nome_usuario = ft.TextField(label="Escreva seu nome no chat", on_submit=entrar_chat)
     botao_entrar = ft.ElevatedButton("Entrar no Chat", on_click=entrar_chat)
@@ -88,4 +92,4 @@ def main(pagina: ft.Page):  # função principal
 
     pagina.add(titulo, botao_iniciar)
 
-ft.app(main, view=ft.WEB_BROWSER) # execução do sistema (  // view= visualização do sistema)
+ft.app(main) # execução do sistema (, view=ft.WEB_BROWSER  // view= visualização do sistema)
