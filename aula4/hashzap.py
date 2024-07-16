@@ -9,21 +9,24 @@
 
 import flet as ft
 
+class Message():
+    def __init__(self, user: str, name: str, text: str):
+        self.user = user
+        self.name = name
+        self.text = text
+
 def main(pagina: ft.Page):  # função principal
     titulo = ft.Text("HashZap")
     nome_usuario = None  # variável global para armazenar o nome do usuário
-
-    def enviar_mensagem_tunel(mensagem):
-        # Divide a mensagem para verificar o remetente
-        autor, texto = mensagem.split(': ', 1)
-        
+    
+    def enviar_mensagem_tunel(mensagem: Message):
         # Alinha à direita ou à esquerda com base no remetente
-        alinhamento = ft.MainAxisAlignment.END if autor == nome_usuario else ft.MainAxisAlignment.START
-        fundo_cor = ft.colors.BLUE_GREY_900 if autor == nome_usuario else ft.colors.BLUE_GREY_700
+        alinhamento = ft.MainAxisAlignment.END if mensagem.user == pagina.session_id else ft.MainAxisAlignment.START
+        fundo_cor = ft.colors.BLUE_GREY_900 if mensagem.user == pagina.session_id else ft.colors.BLUE_GREY_700
 
         # Cria a linha da mensagem com o alinhamento e a cor de fundo apropriada
         mensagem_container = ft.Container(
-            content=ft.Text(mensagem),
+            content=ft.Text(f"{mensagem.name}: {mensagem.text}"),
             bgcolor=fundo_cor,
             padding=10,
             border_radius=5
@@ -68,9 +71,7 @@ def main(pagina: ft.Page):  # função principal
             janela.open = False
 
             pagina.add(chat, linha_mensagem)
-
-            text_entrou_chat = f"{nome_usuario} entrou no chat"
-            pagina.pubsub.send_all(text_entrou_chat)  # envia a mensagem no túnel
+            pagina.pubsub.send_all(Message(user=pagina.session_id, name=nome_usuario, text="entrou no chat"))
             mensagem_texto.focus()
 
     campo_nome_usuario = ft.TextField(label="Escreva seu nome no chat", on_submit=entrar_chat)
@@ -92,4 +93,4 @@ def main(pagina: ft.Page):  # função principal
 
     pagina.add(titulo, botao_iniciar)
 
-ft.app(main) # execução do sistema (, view=ft.WEB_BROWSER  // view= visualização do sistema)
+ft.app(main, view=ft.WEB_BROWSER) # execução do sistema (  // view= visualização do sistema)
