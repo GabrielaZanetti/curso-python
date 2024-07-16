@@ -18,6 +18,26 @@ class Message():
 def main(pagina: ft.Page):  # função principal
     titulo = ft.Text("HashZap")
     nome_usuario = None  # variável global para armazenar o nome do usuário
+    def get_initials(user_name: str):
+        return user_name[:1].capitalize()
+
+    def get_avatar_color(user_name: str):
+        colors_lookup = [
+            ft.colors.AMBER,
+            ft.colors.BLUE,
+            ft.colors.BROWN,
+            ft.colors.CYAN,
+            ft.colors.GREEN,
+            ft.colors.INDIGO,
+            ft.colors.LIME,
+            ft.colors.ORANGE,
+            ft.colors.PINK,
+            ft.colors.PURPLE,
+            ft.colors.RED,
+            ft.colors.TEAL,
+            ft.colors.YELLOW,
+        ]
+        return colors_lookup[hash(user_name) % len(colors_lookup)]
     
     def enviar_mensagem_tunel(mensagem: Message):
         # Alinha à direita ou à esquerda com base no remetente
@@ -25,17 +45,37 @@ def main(pagina: ft.Page):  # função principal
         fundo_cor = ft.colors.BLUE_GREY_900 if mensagem.user == pagina.session_id else ft.colors.BLUE_GREY_700
 
         # Cria a linha da mensagem com o alinhamento e a cor de fundo apropriada
-        mensagem_tunel = f"{mensagem.text}" if mensagem.user == pagina.session_id else f"{mensagem.name}: {mensagem.text}"
-        mensagem_container = ft.Container(
-            content=ft.Text(mensagem_tunel),
+        mensagem_eu = ft.Container(
+            content=ft.Text(f"{mensagem.text}"),
             bgcolor=fundo_cor,
             margin=ft.margin.only(right=15),
             padding=10,
             border_radius=5
         )
-        
+
+        mensagem_env = None
+        if mensagem.user == pagina.session_id:
+            mensagem_env = mensagem_eu  # Mensagem do próprio usuário
+        else:
+            mensagem_env = ft.Row([
+                ft.CircleAvatar(
+                    content=ft.Text(get_initials(user_name=mensagem.name)),
+                    color=ft.colors.WHITE,
+                    bgcolor=get_avatar_color(user_name=mensagem.name),
+                ), 
+                ft.Column(
+                    [
+                        ft.Text(mensagem.name, weight="bold"),
+                        ft.Text(mensagem.text, selectable=True),
+                    ],
+                    tight=True,
+                    spacing=5,
+                )
+            ])  # Mensagem de outro usuário
+
+
         linha_mensagem = ft.Row(
-            controls=[mensagem_container],
+            controls=[mensagem_env],
             alignment=alinhamento
         )
         
