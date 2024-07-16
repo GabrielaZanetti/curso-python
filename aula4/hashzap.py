@@ -48,9 +48,12 @@ def main(pagina: ft.Page):  # função principal
     titulo_janela = ft.Text("Bem-vindo ao HashZap")
 
     def enviar_mensagem(event):
-        pagina.pubsub.send_all(Message(user=pagina.session_id, name=nome_usuario, text=mensagem_texto.value)) # envia a mensagem no túnel
-        mensagem_texto.value = ""
-        mensagem_texto.focus()
+        if not mensagem_texto.value:
+            mensagem_texto.focus()
+        else:
+            pagina.pubsub.send_all(Message(user=pagina.session_id, name=nome_usuario, text=mensagem_texto.value)) # envia a mensagem no túnel
+            mensagem_texto.value = ""
+            mensagem_texto.focus()
 
     mensagem_texto = ft.TextField(label="Digite sua mensagem", on_submit=enviar_mensagem, expand=True)
     btn_enviar = ft.ElevatedButton("Enviar", on_click=enviar_mensagem)
