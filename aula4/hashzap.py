@@ -1,3 +1,12 @@
+## Passo a Passo
+# Titulo: HashZap
+# Botão: iniciar o chat(abre um popUp)
+# PopUp: Titulo, input para o nome, botão para acessar o chat
+# Tela do chat: Nova tela com "%nome% entrou no chat", input para nova mensagem e botão de enviar
+
+# Flet → apps/site/programas de computador
+# `pip install flet`
+
 import flet as ft
 
 def main(pagina: ft.Page):  # função principal
@@ -27,6 +36,7 @@ def main(pagina: ft.Page):  # função principal
         
         chat.controls.append(linha_mensagem)
         pagina.update()  # atualiza a view da tela
+        chat.scroll_to(offset=-1, duration=100)
 
     pagina.pubsub.subscribe(enviar_mensagem_tunel)  # cria o túnel de comunicação
 
