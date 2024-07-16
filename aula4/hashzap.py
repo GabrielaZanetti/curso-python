@@ -25,9 +25,11 @@ def main(pagina: ft.Page):  # função principal
         fundo_cor = ft.colors.BLUE_GREY_900 if mensagem.user == pagina.session_id else ft.colors.BLUE_GREY_700
 
         # Cria a linha da mensagem com o alinhamento e a cor de fundo apropriada
+        mensagem_tunel = f"{mensagem.text}" if mensagem.user == pagina.session_id else f"{mensagem.name}: {mensagem.text}"
         mensagem_container = ft.Container(
-            content=ft.Text(f"{mensagem.name}: {mensagem.text}"),
+            content=ft.Text(mensagem_tunel),
             bgcolor=fundo_cor,
+            margin=10,
             padding=10,
             border_radius=5
         )
@@ -46,15 +48,14 @@ def main(pagina: ft.Page):  # função principal
     titulo_janela = ft.Text("Bem-vindo ao HashZap")
 
     def enviar_mensagem(event):
-        mensagem_user = f"{nome_usuario}: {mensagem_texto.value}"
+        pagina.pubsub.send_all(Message(user=pagina.session_id, name=nome_usuario, text=mensagem_texto.value)) # envia a mensagem no túnel
         mensagem_texto.value = ""
         mensagem_texto.focus()
-        pagina.pubsub.send_all(mensagem_user)  # envia a mensagem no túnel
 
     mensagem_texto = ft.TextField(label="Digite sua mensagem", on_submit=enviar_mensagem, expand=True)
     btn_enviar = ft.ElevatedButton("Enviar", on_click=enviar_mensagem)
 
-    chat = ft.Column(expand=True, scroll=ft.ScrollMode.AUTO, spacing=10)
+    chat = ft.Column(expand=True, scroll=ft.ScrollMode.AUTO)
     linha_mensagem = ft.Row([mensagem_texto, btn_enviar])
 
     def entrar_chat(event):
